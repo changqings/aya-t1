@@ -2,12 +2,14 @@ use aya::programs::{perf_event, PerfEvent};
 use aya::util::online_cpus;
 use aya::{include_bytes_aligned, Bpf};
 use aya_log::BpfLogger;
+use env_logger::Env;
 use log::{debug, info, warn};
 use tokio::signal;
 
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
-    env_logger::init();
+    let env_to_log = Env::default().default_filter_or("info");
+    env_logger::init_from_env(env_to_log);
 
     // Bump the memlock rlimit. This is needed for older kernels that don't use the
     // new memcg based accounting, see https://lwn.net/Articles/837122/
