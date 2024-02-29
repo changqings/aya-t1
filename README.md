@@ -27,8 +27,9 @@ cargo xtask run
 ## debug日志
 RUST_LOG=debug cargo xtask run
 ```
+## 开发环境
+- 使用ubuntu_23.04 amd64
 ## 一些说明
-
 使用`cargo generate https://github.com/aya-rs/aya-template`时，命名项目名称为`aya-t1`
 共生成的项目代码目录三个：
 - aya-t1：userspace代码
